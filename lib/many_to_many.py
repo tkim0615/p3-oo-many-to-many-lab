@@ -1,4 +1,3 @@
-import ipdb
 class Author:
     all = []
 
@@ -76,11 +75,13 @@ class Contract:
             self._royalties =royalties
 
     @classmethod       
-    def contracts_by_date(cls):
-        # return [contract for contract in cls.all if contract.date == date]
-        sorted_by_date = sorted(cls.all, key=lambda contract: contract.date)
-        for contract in sorted_by_date:
-            print(contract.date)
+    def contracts_by_date(cls, date):
+        # # return [contract for contract in cls.all if contract.date == date]
+        # sorted_by_date = sorted(cls.all, key=lambda contract: contract.date, reverse = True)
+        # for contract in sorted_by_date:
+        #     print(contract.date)
+        return [contract for contract in cls.all if contract.date == date]
+        
         
 author1 = Author("Name 1")
 book1 = Book("Title 1")
@@ -97,5 +98,6 @@ mizaki.sign_contract(Book('mybook'), '11/01/2001', 3000)
 mizaki_contract = mizaki.contracts()
 for contract in mizaki_contract:
     print(contract, contract.author, contract.book.title, contract.date, contract.royalties)
+# print(contract2.contracts_by_date())
 ## contract.author still is a instance of Author class. Digg 1 more to its attribute and get the attribute
 
